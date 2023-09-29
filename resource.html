@@ -1,0 +1,547 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource</title>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #222;
+            padding-bottom: 50px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c0392b;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: fixed;
+            background-color: #222;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style-type: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 15px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav.active {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav.active a {
+            color: #000;
+        }
+
+        .nav.active .container {
+            padding: 10px 0;
+        }
+
+        .nav a.current,
+        .nav a:hover {
+            color: #c0392b;
+        }
+
+
+        .hero {
+            background-image: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: bottom center;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+            z-index: -2;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin: -20px 0 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content h2,
+        .content h3 {
+            font-size: 150%;
+            margin: 20px 0;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 30px;
+            letter-spacing: 1.2px;
+        }
+
+        .resource {
+            background-color: #d9d9d9;
+            margin-top: 50px;
+            height: auto;
+            border-radius: 25px;
+            padding: 30px;
+            border-bottom: purple solid 5px;
+        }
+
+        .resource>p {
+            font-size: 50px;
+            text-align: center;
+            color: purple;
+        }
+
+        .bg {
+            background-color: #c2b8d0;
+            margin-top: 50px;
+            height: auto;
+            border-radius: 25px;
+            padding: 30px;
+            font-size: 30px;
+            text-align: center;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .rules {
+            background-color: #999999;
+            margin-top: 50px;
+            height: auto;
+            border-radius: 25px;
+            padding: 30px;
+            font-size: 30px;
+            text-align: center;
+            margin-left: 10%;
+            width: 80%;
+        }
+
+        .professor {
+            background-color: #c2b8d0;
+            margin-top: 50px;
+            height: auto;
+            border-radius: 25px;
+            padding: 30px;
+            font-size: 30px;
+            text-align: center;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .tail {
+            margin-top: 80px;
+            background-color: #251725;
+            width: 100%;
+            height: auto;
+        }
+
+        .tailLeft {
+            float: left;
+            width: 50%;
+            height: 200px;
+            background-color: #251725;
+            color: white;
+        }
+
+        .tailRight {
+            float: right;
+            width: 50%;
+            height: 200px;
+            background-color: #251725;
+            color: white
+        }
+
+        table {
+            margin-top: 10px;
+
+        }
+
+        .tailLeftTable {
+            margin-left: 65%;
+            text-align: left;
+        }
+
+        .tailRightTable {
+            margin-left: 10%;
+        }
+
+        td {
+            height: 60px;
+            width: 150px;
+        }
+        .aTail{
+            color: white;
+        }
+
+
+
+        .nav>div>ul>li {
+            position: relative;
+
+        }
+
+
+        .nav>div>ul>li>ul {
+            /* 动画效果，当高度改变时，使其2s渐变 */
+            transition: height 1s ease;
+            background-color: #222;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 45px;
+            text-align: center;
+            display: inline-block;
+            left: 0;
+        }
+
+        .nav.active>div>ul>li>ul {
+            background-color: #fff;
+            margin-top: -9px;
+        }
+
+        .nav>div>ul>li>ul>li {
+            margin-bottom: 25px;
+
+        }
+
+
+
+        .shell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .card {
+            width: 270px;
+            height: 545px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 25px;
+            perspective: 2500px;
+            transition: all 0.4s;
+            margin: 0 100px;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper {
+            transition: all 0.3s;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .card:hover .wrapper {
+            transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+            box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+        }
+
+        .wrapper::before,
+        .wrapper::after {
+            content: "";
+            opacity: 0;
+            width: 100%;
+            height: 80px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 0;
+        }
+
+        .wrapper::before {
+            top: 0;
+            height: 100%;
+            background-image: linear-gradient(to top,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19,0.5) 97%);
+        }
+
+        .wrapper::after {
+            bottom: 0;
+            opacity: 1;
+            background-image: linear-gradient(to bottom,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19,0.5) 97%);
+        }
+
+        .card:hover .wrapper::before,
+        .wrapper::after {
+            opacity: 1;
+        }
+
+        .card:hover .wrapper::after {
+            height: 120px;
+        }
+
+        .title {
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .title {
+            transform: translate3d(0%, -50px, 100px);
+        }
+
+        .character {
+            width: 100%;
+            opacity: 0;
+            transition: all 0.3s;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .card:hover .character {
+            opacity: 1;
+            transform: translate3d(0%, -20%, 100px);
+        }
+
+        .card:hover {
+            transform: translateY(40px);
+        }
+
+
+    </style>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="container">
+        <h1 class="logo"><a href="./index.jsp">Econnect Economic Conference</a></h1>
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li>
+                <a href="about.jsp">About</a>
+                <ul>
+                    <li><a href="eec.jsp">EEC</a></li>
+                    <li><a href="faq.jsp">FAQ</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="conference.jsp" class="current">Conference</a>
+                <ul>
+                    <li><a href="schedule.jsp">Schedule</a></li>
+                    <li><a href="resource.jsp">Resource</a></li>
+                    <li><a href="venue.jsp">Venue</a></li>
+                </ul>
+
+            </li>
+
+            <li><a href="team.jsp">Team</a></li>
+            <li><a href="sponser.jsp">Sponser</a></li>
+            <li><a href="registration.jsp">Registration</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="container">
+        <h1>Conference</h1>
+        <p>Resource</p>
+    </div>
+</div>
+
+
+
+<section class="container content">
+    <div class="resource">
+        <p>RESOURCE</p>
+    </div>
+
+    <div style="background-color: purple; width: 50%; height: 5px; margin-top: 50px; margin-left: 25% ;">
+    </div>
+
+    <div class="bg">
+        <a href="">
+            <h2 style="color: black;">BACKGROUND</h2>
+        </a>
+    </div>
+
+    <div style="background-color: purple; width: 50%; height: 5px; margin-top: 50px; margin-left: 25% ;">
+    </div>
+
+    <div class="rules">
+        <a href="">
+            <h2 style="color: black;">RULES OF PROCEDURE</h2>
+        </a>
+    </div>
+
+    <div style="background-color: purple; width: 50%; height: 5px; margin-top: 50px; margin-left: 25% ;">
+    </div>
+
+    <div class="professor">
+        <a href="">
+            <h2 style="color: black;">PROFESSORS</h2>
+        </a>
+    </div>
+
+
+
+    <div class="shell">
+
+        <div class="card">
+            <div class="wrapper">
+                <!-- <img src="./image/01.png" class="cover-image" /> -->
+                <img src="../picture/photo.jpg" class="cover-image" />
+            </div>
+            <img src="../picture/Aiden.png" class="title" />
+
+            <img style="width: 250px; height: 800px; margin-left: 75px;" src="../picture/photo2.png" class="character" />
+            <span style="color:black; top:0px; right: 200px; font-size: 30px;" class="character"><b>Yilin Yang</b><br>Website Designer</span>
+
+        </div>
+
+<%--        <div class="card">--%>
+<%--            <div class="wrapper">--%>
+<%--                <img src="./image/03.png" class="cover-image" />--%>
+<%--            </div>--%>
+<%--            <img src="./image/text-2.png" class="title" />--%>
+<%--            <img src="./image/04.png" class="character" />--%>
+<%--        </div>--%>
+<%--    </div>--%>
+
+
+</section>
+
+
+
+
+
+<div class="tail">
+    <div class="tailLeft">
+        <table class="tailLeftTable">
+            <tr>
+                <td><img style="width: 120px; height: 60px;" src="../picture/eecIcon.png"></td>
+            </tr>
+            <tr>
+                <td>Contect Us</td>
+            </tr>
+            <tr>
+                <td style="width: 55px">info@econnecteconomics.com</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="tailRight">
+        <table class="tailRightTable">
+            <tr>
+                <td><a class="aTail" href="index.jsp">Home</a></td>
+                <td><a class="aTail" href="team.jsp">Team</a></td>
+            </tr>
+            <tr>
+                <td><a class="aTail" href="about.jsp">About</a></td>
+                <td><a class="aTail" href="sponser.jsp">Sponser</a></td>
+            </tr>
+            <tr>
+                <td><a class="aTail" href="conference.jsp">Conference</a></td>
+                <td><a class="aTail" href="registration.jsp">Registration</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+<script>
+    const nav = document.querySelector('.nav')
+    window.addEventListener('scroll', fixNav)
+
+    function fixNav() {
+        if (window.scrollY > nav.offsetHeight + 150) {
+            nav.classList.add('active')
+        } else {
+            nav.classList.remove('active')
+        }
+    }
+    var firstLi = document.querySelectorAll(".nav>div>ul>li");
+    // 通过循环给每个一级li标签都绑定鼠标移入事件
+    for (var i = 0; i < firstLi.length; i++) {
+        firstLi[i].onmouseover = function () {
+            if (this.querySelector("ul")) {
+                // firstLi[i]已经不是当前的了，this是当前的
+                var secUL = this.querySelector("ul");
+                // 获得当前二级菜单中的li标签个数
+                var liLength = secUL.querySelectorAll('li').length;
+                secUL.style.height = 44 * liLength + 'px';
+            }
+        }
+
+        firstLi[i].onmouseout = function () {
+            if (this.querySelector("ul")) {
+                // firstLi[i]已经不是当前的了，this是当前的
+                var secUL = this.querySelector("ul");
+                secUL.style.height = '0px';
+            }
+        }
+    }
+</script>
+
+</html>
