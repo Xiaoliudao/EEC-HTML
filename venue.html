@@ -143,51 +143,53 @@
             justify-content: center;
         }
 
+
         .tail {
             margin-top: 80px;
             background-color: #251725;
             width: 100%;
             height: auto;
+            display: flex;
+            justify-content: space-between;
         }
 
         .tailLeft {
-            float: left;
-            width: 50%;
-            height: 200px;
-            background-color: #251725;
+            display: flex;
+            flex: 1;
+            padding: 40px;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: right;
+            width: 300px;
             color: white;
+            text-align: right;
+            margin-bottom: 10px;
         }
 
         .tailRight {
-            float: right;
-            width: 50%;
-            height: 200px;
-            background-color: #251725;
-            color: white
-        }
-
-        table {
-            margin-top: 10px;
-
-        }
-
-        .tailLeftTable {
-            margin-left: 65%;
-            text-align: left;
-        }
-
-        .tailRightTable {
-            margin-left: 10%;
-        }
-
-        td {
+            display: flex;
+            flex: 1;
+            padding: 30px;
+            width: 300px;
             color: white;
-            height: 60px;
-            width: 150px;
+        }
+
+        .tailLinks {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-top: 20px;
+            margin-left: 30px;
         }
 
         .aTail {
             color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .aTail:hover {
+            color: #c0392b;
         }
 
         .nav>div>ul>li {
@@ -217,6 +219,142 @@
 
         .nav>div>ul>li>ul>li {
             margin-bottom: 25px;
+
+        }
+
+        @media screen and (min-width: 963px) {
+            .nav2 {
+                display: none;
+            }
+        }
+
+
+        @media screen and (max-width: 963px) {
+            .nav {
+                display: none;
+            }
+
+            .nav2 {
+                display: flex;
+                position: fixed;
+                background-color: #222;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .container {
+                display: flex;
+                align-items: center;
+            }
+
+            .logo {
+                display: inline;
+                margin-top: -10px;
+            }
+
+            .ul {
+                display: none;
+                position: fixed;
+                left: 0;
+                top: 40px;
+                padding-left: 20px;
+                width: 100%;
+                height: 26.25rem;
+                background-color: #222;
+            }
+
+            ul li a {
+                color: white;
+            }
+
+            li {
+                margin-top: 1.25rem;
+            }
+
+            ul li ul li {
+                margin-top: 0.6rem;
+                margin-left: 1.5rem;
+            }
+
+            ul li ul {
+                list-style-type: circle;
+                color: white;
+            }
+
+            .nav ul li {
+                flex: 1;
+                text-align: center;
+            }
+
+            .nav a {
+                padding: 15px;
+            }
+
+
+            .hero h1 {
+                font-size: 36px;
+                margin: -15px 0 15px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                letter-spacing: 0.5px;
+            }
+
+            td {
+                width: auto;
+                padding: 10px;
+                text-align: left;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .hamburger {
+                margin-left: 20px;
+                cursor: pointer;
+            }
+
+            .hamburger input {
+                display: none;
+            }
+
+            .hamburger svg {
+                /* The size of the SVG defines the overall size */
+                height: 3em;
+                /* Define the transition for transforming the SVG */
+                transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .line {
+                fill: none;
+                stroke: white;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 3;
+                /* Define the transition for transforming the Stroke */
+                transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .line-top-bottom {
+                stroke-dasharray: 12 63;
+            }
+
+            .hamburger input:checked+svg {
+                transform: rotate(-45deg);
+            }
+
+            .hamburger input:checked+svg .line-top-bottom {
+                stroke-dasharray: 20 300;
+                stroke-dashoffset: -32.42;
+            }
+
+
 
         }
     </style>
@@ -253,6 +391,53 @@
         </div>
     </nav>
 
+
+
+    <nav class="nav2">
+        <div class="container" id="container">
+            <h1 class="logo"><a href="./index.html" style="color: white;">Econnect Economic Conference</a></h1>
+            <!-- <button id="button" class="button"> line </button> -->
+
+            <label class="hamburger">
+                <input type="checkbox" id="button">
+                <svg viewBox="0 0 32 32">
+                    <path class="line line-top-bottom"
+                        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                    </path>
+                    <path class="line" d="M7 16 27 16"></path>
+                </svg>
+            </label>
+
+
+            <ul class="ul" id="ul">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="about.html">About</a>
+                    <ul>
+                        <li><a href="eec.html">EEC</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="conference.html" class="current">Conference</a>
+                    <ul>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="resource.html">Resource</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                    </ul>
+
+                </li>
+
+                <li><a href="team.html">Team</a></li>
+                <li><a href="sponser.html">Sponser</a></li>
+                <li><a href="registration.html">Registration</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+
     <div class="hero">
         <div class="container">
             <h1>Conference</h1>
@@ -268,36 +453,32 @@
     </section>
 
 
+
+
+
     <div class="tail">
         <div class="tailLeft">
-            <table class="tailLeftTable">
-                <tr>
-                    <td><img style="width: 120px; height: 60px;" src="../picture/eecIcon.png"></td>
-                </tr>
-                <tr>
-                    <td>Contect Us</td>
-                </tr>
-                <tr>
-                    <td style="width: 55px">info@econnecteconomics.com</td>
-                </tr>
-            </table>
+
+            <img style="width: 120px; height: 60px; margin-left: auto;" src="../picture/eecIcon.png">
+            <p>Contact Us</p>
+            <p>info@econnecteconomics.com</p>
+
         </div>
 
         <div class="tailRight">
-            <table class="tailRightTable">
-                <tr>
-                    <td><a class="aTail" href="index.html">Home</a></td>
-                    <td><a class="aTail" href="team.html">Team</a></td>
-                </tr>
-                <tr>
-                    <td><a class="aTail" href="about.html">About</a></td>
-                    <td><a class="aTail" href="sponser.html">Sponser</a></td>
-                </tr>
-                <tr>
-                    <td><a class="aTail" href="conference.html">Conference</a></td>
-                    <td><a class="aTail" href="registration.html">Registration</a></td>
-                </tr>
-            </table>
+
+            <div class="tailLinks">
+                <a class="aTail" href="index.html">Home</a>
+                <a class="aTail" href="about.html">About</a>
+                <a class="aTail" href="conference.html">Conference</a>
+            </div>
+
+            <div class="tailLinks">
+                <a class="aTail" href="team.html">Team</a>
+                <a class="aTail" href="sponser.html">Sponsor</a>
+                <a class="aTail" href="registration.html">Registration</a>
+            </div>
+
         </div>
     </div>
 
@@ -334,6 +515,10 @@
             }
         }
     }
+    $('#button').click(function () {
+        $("#ul").slideToggle("slow");
+
+    });
 </script>
 
 </html>
