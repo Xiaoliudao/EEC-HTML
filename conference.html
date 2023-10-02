@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conference</title>
+    <title>Home</title>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 
     <style>
@@ -18,10 +17,12 @@
             font-family: 'Open Sans', sans-serif;
             color: #222;
             padding-bottom: 50px;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
         a {
-            color: black;
             text-decoration: none;
         }
 
@@ -30,10 +31,6 @@
             transition: 0.5s;
         }
 
-
-        h2 {
-            text-align: center;
-        }
 
         .container {
             max-width: 1400px;
@@ -155,8 +152,6 @@
         }
 
 
-
-        
         .tail {
             margin-top: 80px;
             background-color: #251725;
@@ -328,6 +323,8 @@
 
             body {
                 overflow-x: hidden;
+                margin: 0;
+                padding: 0;
             }
 
             .hamburger {
@@ -381,7 +378,7 @@
         <div class="container">
             <h1 class="logo"><a href="./index.html">Econnect Economic Conference</a></h1>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="current">Home</a></li>
                 <li>
                     <a href="about.html">About</a>
                     <ul>
@@ -390,7 +387,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="conference.html" class="current">Conference</a>
+                    <a href="conference.html">Conference</a>
                     <ul>
                         <li><a href="schedule.html">Schedule</a></li>
                         <li><a href="resource.html">Resource</a></li>
@@ -454,60 +451,48 @@
     </nav>
 
 
-
     <div class="hero">
-        <div>
-            <h1>Conference</h1>
-
+        <div class="container" style="width: 100%">
+            <h1>Welcome To Econnect Economic Conference</h1>
+            <p style="margin-bottom: 200px;">Your next debate resolution writer</p>
+            <p><i>First Iteration -- February 10, 2024</i></p>
         </div>
+
+
     </div>
 
-    <section class="content">
-        <div class="mission">
-            <h2><a href="schedule.html">Schedule</a></h2>
-        </div>
+    <section class="container content">
 
-        <div class="vision">
-            <h2><a href="resource.html">Resource</a></h2>
-        </div>
-
-        <div class="mission">
-            <h2><a href="venue.html">Venue</a></h2>
-        </div>
 
     </section>
 
 
 
-
-
     <div class="tail">
         <div class="tailLeft">
-           
-                <img style="width: 120px; height: 60px; margin-left: auto;" src="../picture/eecIcon.png">
-                <p>Contact Us</p>
-                <p>info@econnecteconomics.com</p>
+
+            <img style="width: 120px; height: 60px; margin-left: auto;" src="../picture/eecIcon.png">
+            <p>Contact Us</p>
+            <p>info@econnecteconomics.com</p>
 
         </div>
 
         <div class="tailRight">
 
-                <div class="tailLinks">
-                    <a class="aTail" href="index.html">Home</a>
-                    <a class="aTail" href="about.html">About</a>
-                    <a class="aTail" href="conference.html">Conference</a>
-                </div> 
+            <div class="tailLinks">
+                <a class="aTail" href="index.html">Home</a>
+                <a class="aTail" href="about.html">About</a>
+                <a class="aTail" href="conference.html">Conference</a>
+            </div>
 
-                <div class="tailLinks">
-                    <a class="aTail" href="team.html">Team</a>                         
-                    <a class="aTail" href="sponser.html">Sponsor</a>
-                    <a class="aTail" href="registration.html">Registration</a>
-                </div>
+            <div class="tailLinks">
+                <a class="aTail" href="team.html">Team</a>
+                <a class="aTail" href="sponser.html">Sponsor</a>
+                <a class="aTail" href="registration.html">Registration</a>
+            </div>
 
         </div>
     </div>
-
-
 
 </body>
 <script>
@@ -542,15 +527,10 @@
             }
         }
     }
-
-
     $('#button').click(function () {
         $("#ul").slideToggle("slow");
 
     });
-
-
-
 </script>
 
 </html>
